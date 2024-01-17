@@ -8,11 +8,9 @@
 import UIKit
 
 class HabitsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
-        
-    let newHabitVC = HabitViewController(color: .white, title: "Создавать")
     
     var detailsViewController: HabitDetailsViewController?
-            
+    
     let habitsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.toAutoLayout()
@@ -44,11 +42,12 @@ class HabitsViewController: UIViewController, UICollectionViewDataSource, UIColl
         habitsCollectionView.dataSource = self
         habitsCollectionView.delegate = self
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        newHabitVC.delegate = self
     }
     
     @objc func addNewHabit() {
+        let newHabitVC = HabitViewController(color: .white, title: "Создать")
         let navigationHabit = UINavigationController(rootViewController: newHabitVC)
+        newHabitVC.delegate = self
         present(navigationHabit, animated: true)
     }
     
@@ -105,11 +104,11 @@ extension HabitsViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-        detailsViewController = HabitDetailsViewController(title: HabitsStore.shared.habits[indexPath.item].name, habitForEdit: HabitsStore.shared.habits[indexPath.item])
-        detailsViewController?.delegate = self
+            detailsViewController = HabitDetailsViewController(title: HabitsStore.shared.habits[indexPath.item].name, habitForEdit: HabitsStore.shared.habits[indexPath.item])
+            detailsViewController?.delegate = self
             navigationController?.pushViewController(detailsViewController!, animated: true)
         } else {
-            return self.present(UIAlertController.yourProgressAlert, animated: true, completion: nil)
+            self.present(UIAlertController.yourProgressAlert, animated: true, completion: nil)
         }
     }
     
@@ -117,13 +116,13 @@ extension HabitsViewController {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-
+            
             if (UIWindow.isLandscape) {
                 return CGSize(width: collectionView.bounds.width - 14, height: 60)
             } else {
                 return CGSize(width: collectionView.bounds.width - 32, height: 60)}
         } else {
-
+            
             if (UIWindow.isLandscape) {
                 return CGSize(width: collectionView.bounds.width/2 - 14, height: 130)
             } else {
@@ -146,9 +145,9 @@ extension HabitsViewController {
 
 extension HabitsViewController: HabitCollectionViewCellDelegate {
     
-     func reloadCollectionView() {
-         print("reloadCollectionView")
-         self.habitsCollectionView.reloadData()
+    func reloadCollectionView() {
+        print("reloadCollectionView")
+        self.habitsCollectionView.reloadData()
     }
 }
 

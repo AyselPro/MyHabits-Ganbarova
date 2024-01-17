@@ -81,15 +81,15 @@ The passage of stages for which a habit is developed in 21 days is subject to th
         
         NSLayoutConstraint.activate([
             infoScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            infoScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            infoScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            infoScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            infoScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             infoScrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
             titleInfoHabitsLabel.topAnchor.constraint(equalTo: infoScrollView.topAnchor, constant: 22),
             titleInfoHabitsLabel.leadingAnchor.constraint(equalTo: infoScrollView.leadingAnchor),
             titleInfoHabitsLabel.trailingAnchor.constraint(equalTo: infoScrollView.trailingAnchor),
             
-            textInfoHabitsLabel.topAnchor.constraint(equalTo: titleInfoHabitsLabel.bottomAnchor, constant: 16),
+            textInfoHabitsLabel.topAnchor.constraint(equalTo: titleInfoHabitsLabel.bottomAnchor),
             textInfoHabitsLabel.leadingAnchor.constraint(equalTo: titleInfoHabitsLabel.leadingAnchor),
             textInfoHabitsLabel.trailingAnchor.constraint(equalTo: titleInfoHabitsLabel.trailingAnchor),
             textInfoHabitsLabel.widthAnchor.constraint(equalTo: infoScrollView.widthAnchor),
